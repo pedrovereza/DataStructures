@@ -5,7 +5,7 @@ class List{
 
 private:
 	Node<T>* root;
-	int count;
+	size_t count;
 
 	void DeleteNodes(Node<T>* node)
 	{
@@ -74,34 +74,24 @@ public:
 		Add(new Node<T>(data));
 	}
 
-	T FirstOrDefault()
+	T* FirstOrDefault()
 	{
-		return root == nullptr ? T() : root->Data;
+		return root == nullptr ? new T() : &root->Data;
 	}
 
-	T Last()
+	T* Last()
 	{
 		return GetAt(Count() -1);
 	}
 
-	T GetAt(const int index)
+	T* GetAt(const int index)
 	{
-		int indexOf = 0;
+		Node<T>* node = GetNodeAt(index);
 
-		Node<T>* iterator = root;
+		if (node != nullptr)
+			return &node->Data;
 
-		while(iterator != nullptr)
-		{
-			if (indexOf != index)
-			{
-				iterator = iterator->GetNext();
-				indexOf++;
-			}
-			else
-				return iterator->Data;
-		}
-
-		return NULL;
+		return nullptr;
 	}
 
 	bool Contains(T value)
@@ -117,6 +107,11 @@ public:
 		}
 
 		return false;
+	}
+
+	bool isEmpty()
+	{
+		return count == 0;
 	}
 
 	void Clear()

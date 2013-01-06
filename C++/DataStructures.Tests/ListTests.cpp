@@ -34,7 +34,7 @@ namespace DataStructuresTests
 			list.Clear();
 
 			Assert::AreEqual(0, list.Count());
-			Assert::AreEqual(0, list.FirstOrDefault());
+			Assert::AreEqual(0, (*list.FirstOrDefault()));
 		}
 
 		TEST_METHOD(Contains_Should_Return_True_When_List_Contains_Given_Element)
@@ -62,23 +62,23 @@ namespace DataStructuresTests
 			for (int i = 10; i > 0; i--)
 				list.Add(i);
 
-			Assert::AreEqual(10, list.GetAt(0));
-			Assert::AreEqual(1, list.GetAt(9));
-			Assert::AreEqual(NULL, list.GetAt(25));
+			Assert::AreEqual(10, (*list.GetAt(0)));
+			Assert::AreEqual(1, (*list.GetAt(9)));
+			Assert::IsNull(list.GetAt(25));
 		}
 
 		TEST_METHOD(FirstOrDefault_Should_Return_Default_Value_When_List_Is_Empty)
 		{
-			Assert::AreEqual(0, list.FirstOrDefault());
+			Assert::AreEqual(0, (*list.FirstOrDefault()));
 		}
 
 		TEST_METHOD(FirstOrDefault_Should_Return_First_Element_When_List_Is_Not_Empty)
 		{
 			list.Add(999);
-			Assert::AreEqual(999, list.FirstOrDefault());
+			Assert::AreEqual(999, (*list.FirstOrDefault()));
 
 			list.Add(10);
-			Assert::AreEqual(999, list.FirstOrDefault());
+			Assert::AreEqual(999, (*list.FirstOrDefault()));
 		}
 
 		TEST_METHOD(RemoveAt_Should_Remove_Element_At_Given_Index)
@@ -103,12 +103,12 @@ namespace DataStructuresTests
 			list.Add(2);
 			list.Add(3);
 
-			Assert::AreEqual(3, list.Last());
+			Assert::AreEqual(3, (*list.Last()));
 		}
 
 		TEST_METHOD(Last_Should_Return_Null_When_List_Is_Empty)
 		{
-			Assert::AreEqual(NULL, list.Last());
+			Assert::IsNull(list.Last());
 		}
 	};
 }
