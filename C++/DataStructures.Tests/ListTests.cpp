@@ -19,11 +19,11 @@ namespace DataStructuresTests
 		TEST_METHOD(Should_Count_Elements_On_List)
 		{
 			list.Add(1);
-			Assert::AreEqual(1, list.Count());
+			Assert::AreEqual((size_t)1, list.Count());
 
 			list.Add(2);
 			list.Add(3);
-			Assert::AreEqual(3, list.Count());
+			Assert::AreEqual((size_t)3, list.Count());
 		}
 
 		TEST_METHOD(Clear_Should_Delete_All_Nodes_And_Reset_Count)
@@ -33,7 +33,7 @@ namespace DataStructuresTests
 
 			list.Clear();
 
-			Assert::AreEqual(0, list.Count());
+			Assert::AreEqual((size_t)0, list.Count());
 			Assert::AreEqual(0, (*list.FirstOrDefault()));
 		}
 
@@ -89,7 +89,7 @@ namespace DataStructuresTests
 
 			list.RemoveAt(1);
 
-			Assert::AreEqual(2, list.Count());
+			Assert::AreEqual((size_t)2, list.Count());
 
 			Assert::IsFalse(list.Contains(2));
 

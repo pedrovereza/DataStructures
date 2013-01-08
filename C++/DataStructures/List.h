@@ -1,22 +1,10 @@
-#include "Node.h"
+#include "BasicNodeStructure.h"
 
 template<class T>
-class List{
+class List : public BasicNodeStructure<T>{
 
 private:
-	Node<T>* root;
-	size_t count;
-
-	void DeleteNodes(Node<T>* node)
-	{
-		while (node != nullptr)
-		{
-			Node<T>* temp = node;
-			node = node->GetNext();
-			delete temp;
-		}
-	}
-
+	
 	Node<T>* LastNode()
 	{
 		return GetNodeAt(Count() - 1);
@@ -48,25 +36,15 @@ private:
 			root = node;
 		else
 			LastNode()->SetNext(node);
-
-		count++;
-	}
-
-	void Initialize()
-	{
-		root = nullptr;
-		count = 0;
 	}
 
 public:
-	List()
+	List() : BasicNodeStructure<T>()
 	{
-		Initialize();
 	}
 
 	~List()
 	{
-		DeleteNodes(root);
 	}
 
 	void Add(T data)
@@ -109,22 +87,6 @@ public:
 		return false;
 	}
 
-	bool isEmpty()
-	{
-		return count == 0;
-	}
-
-	void Clear()
-	{
-		DeleteNodes(root);
-		Initialize();
-	}
-
-	int Count()
-	{
-		return count;
-	}
-
 	void RemoveAt(int index)
 	{
 		//TODO: throw exception if index is equal to or higher than Count()
@@ -145,7 +107,6 @@ public:
 			else
 			{
 				previous->SetNext(iterator->GetNext());
-				count--;
 				iterator = nullptr;
 				break;
 			}
