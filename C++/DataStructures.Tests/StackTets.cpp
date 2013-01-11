@@ -48,6 +48,18 @@ namespace DataStructuresTests
 			Assert::IsFalse(stack.IsEmpty());
 		}
 
+		TEST_METHOD(Elements_Are_Popped_At_The_Reverse_Order_They_Were_Pushed)
+		{
+			stack.Push("last one to pop");
+			stack.Push("second one to pop");
+			stack.Push("first popped");
+
+			Assert::AreEqual(std::string("first popped"), (*stack.Pop()));
+			Assert::AreEqual(std::string("second one to pop"), (*stack.Pop()));
+			Assert::AreEqual(std::string("last one to pop"), (*stack.Pop()));
+
+		}
+
 		TEST_METHOD(Empty_Returns_True_When_Stack_Contains_No_Elements)
 		{
 			Assert::IsTrue(stack.IsEmpty());
