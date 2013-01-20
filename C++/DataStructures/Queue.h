@@ -33,6 +33,7 @@ public:
 		if (root == nullptr)
 			return nullptr;
 
+		//TODO: a wild memory leak appears (you never delete root).
 		Node<T>* temp = root;
 		root = root->GetNext();
 

@@ -25,6 +25,7 @@ public:
 		if (IsEmpty())
 			return nullptr;
 
+		//TODO: You never get to delete the previous root.
 		Node<T>* ret = root;
 		root = root->GetNext();
 

@@ -23,6 +23,8 @@ protected:
 			node = node->GetNext();
 			delete temp;
 		}
+
+		root = nullptr;
 	}
 
 public:
@@ -33,7 +35,6 @@ public:
 	void Clear()
 	{
 		DeleteNodes(root);
-		root = nullptr;
 	}
 
 	size_t Count()
