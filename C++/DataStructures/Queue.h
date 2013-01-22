@@ -14,7 +14,7 @@ public:
 
 	void Enqueue(const T data)
 	{
-		if (root == nullptr)
+		if (IsEmpty())
 		{
 			root = new Node<T>(data);
 			return;
@@ -30,13 +30,16 @@ public:
 
 	T* Dequeue()
 	{
-		if (root == nullptr)
+		if (IsEmpty())
 			return nullptr;
+
+		T* value = new T(root->Data);
 
 		Node<T>* temp = root;
 		root = root->GetNext();
+		delete temp;
 
-		return &(temp->Data);
+		return value;
 	}
 
 	T* Peek()

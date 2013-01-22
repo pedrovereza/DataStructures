@@ -14,7 +14,7 @@ public:
 	{
 		Node<T>* newRoot = new Node<T>(data);
 
-		if (root != nullptr)
+		if (!IsEmpty())
 			newRoot->SetNext(root);
 
 		root = newRoot;
@@ -25,10 +25,13 @@ public:
 		if (IsEmpty())
 			return nullptr;
 
-		Node<T>* ret = root;
-		root = root->GetNext();
+		T* value = new T(root->Data);
 
-		return &ret->Data;
+		Node<T>* temp = root;
+		root = temp->GetNext();
+		delete temp;
+
+		return value;
 	}
 
 	T* Peek()

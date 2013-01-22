@@ -32,7 +32,7 @@ private:
 
 	void Add(Node<T>* node)
 	{
-		if (root == nullptr)
+		if (IsEmpty())
 			root = node;
 		else
 			LastNode()->SetNext(node);
@@ -54,7 +54,7 @@ public:
 
 	T* FirstOrDefault()
 	{
-		return root == nullptr ? new T() : &root->Data;
+		return IsEmpty() ? new T() : &root->Data;
 	}
 
 	T* Last()
