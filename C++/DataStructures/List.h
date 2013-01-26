@@ -54,7 +54,18 @@ public:
 
 	T* FirstOrDefault()
 	{
+<<<<<<< HEAD
 		return IsEmpty() ? new T() : &root->Data;
+=======
+		//TODO: this isn't a good way to deal with the possibility of this being
+		// empty.  When you call this method on an empty list, you'll have to
+		// delete what was returned or you'll have a memory leak.  OTOH, if you
+		// delete the return value when it's not an empty list, you have a bug.
+		// I suggest you rename this method First and throw an exception when
+		// the list is empty.
+
+		return root == nullptr ? new T() : &root->Data;
+>>>>>>> 5d8d6c7afa1c5ca5e40e36b4cad588aa869a48e3
 	}
 
 	T* Last()

@@ -33,8 +33,6 @@ public:
 		if (IsEmpty())
 			return nullptr;
 
-		T* value = new T(root->Data);
-
 		Node<T>* temp = root;
 		root = root->GetNext();
 		delete temp;
